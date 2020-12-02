@@ -12,7 +12,7 @@ class User < ApplicationRecord
     has_many :projects, through: :collaborations
 
     has_many :posts
-    
+
 
     has_secure_password
 
@@ -32,7 +32,11 @@ class User < ApplicationRecord
     #     following_users.include?(user)
     # end
 
+    
 
+    def add_karma
+        self.karma += 1
+    end
 
 
 end

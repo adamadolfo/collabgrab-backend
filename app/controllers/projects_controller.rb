@@ -26,13 +26,19 @@ class ProjectsController < ApplicationController
     end
 
     def create
+
         @project = Project.new(name: params[:name], details: params[:details], location: params[:location])
-        if @project.save
+        if @project.save!
+
             @required_skill = RequiredSkill.create(name: params[:required_skill], project_id: @project.id)
             @collaboration = Collaboration.new(user_id: params[:user_id], project_id: @project.id)
+            
             if @collaboration.save
                 @user = User.find(params[:user_id])
+                
                 if @user
+                    @user.add_karma
+                    @user.save
                     render :json => @user.to_json(include: [:skills, :projects])
                 end
             end

@@ -29,6 +29,9 @@ class PostsController < ApplicationController
         @post = Post.new(name: params[:name], user_id: params[:user_id], project_id: params[:project_id], message: params[:message])
         
         if @post.save
+            @user = User.find(params[:user_id])
+            @user.add_karma
+            @user.save
             @project = Project.find(params[:project_id])
             render :json => @project.to_json(:include => [:skills, :users, :required_skills, :posts])
             

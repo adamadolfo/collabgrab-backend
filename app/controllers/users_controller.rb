@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(name: params[:name], username: params[:username], password: params[:password], location: params[:location])
+        @user = User.new(name: params[:name], username: params[:username], password: params[:password], location: params[:location], karma: 0)
         if @user.save
             session[:user_id] = @user.id
             render :json => @user.to_json(include: [:skills, :projects])
@@ -43,6 +43,13 @@ class UsersController < ApplicationController
         if @user
             @user.update(name: params[:name], location: params[:location], img: params[:img], bio: params[:bio])
             render :json => @user.to_json(include: [:skills, :projects])
+        end
+    end
+
+    def karma
+        @user = User.find(params[:user_id])
+        if @user
+            @user.add_karma
         end
     end
 end

@@ -8,7 +8,7 @@ class Project < ApplicationRecord
     has_many :required_skills
 
     has_many :posts
-    validates :name, uniqueness: true
+    
     validates :name, presence: true
 
     validates :details, presence: true

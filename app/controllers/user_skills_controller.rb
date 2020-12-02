@@ -27,8 +27,10 @@ class UserSkillsController < ApplicationController
     def create
         @user_skill = UserSkill.new(user_id: params[:user_id], skill_id: params[:skill_id])
         if @user_skill.save
-            user = User.find(@user_skill.user_id)
-            render json: user.to_json(include: [:skills, :projects])
+            @user = User.find(@user_skill.user_id)
+            @user.add_karma
+            @user.save
+            render json: @user.to_json(include: [:skills, :projects])
         else 
             render json: {
                 working: false,
