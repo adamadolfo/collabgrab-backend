@@ -60,9 +60,9 @@ Authentication done with 'bcrypt' ruby gem <br/>
 
 
 ## Setup
-$ bundle install (to download gems)
-$ rails s (to start server)
-server starts on localhost port 3001
+$ bundle install (to download gems) <br/>
+$ rails s (to start server) <br/>
+server starts on localhost port 3001 <br/>
 
 
 
