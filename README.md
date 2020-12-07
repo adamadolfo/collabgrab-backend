@@ -53,10 +53,10 @@ more applications and rewards for the karma point system
 
 ## Technologies
 
-build on ruby '2.6.1'
-build on 'rails', '~> 6.0.3', '>= 6.0.3.4'
-CollabGrab uses a postgres database
-Authentication done with 'bcrypt' ruby gem
+Built on ruby '2.6.1' <br/>
+Built on 'rails', '~> 6.0.3', '>= 6.0.3.4' <br/>
+CollabGrab uses a postgres database <br/>
+Authentication done with 'bcrypt' ruby gem <br/>
 
 
 ## Setup
