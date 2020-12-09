@@ -76,7 +76,7 @@ RequiredSkill.create(name: "IT", project_id: project2.id)
 
 
 (50).times do 
-UserSkill.create(user_id: rand(236..250), skill_id: rand(2412..2440))
+UserSkill.create(user_id: rand(267..280), skill_id: rand(2456..2480))
 end
 
 (100).times do

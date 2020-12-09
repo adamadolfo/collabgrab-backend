@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
-    has_many :followed, through: :followed_users
+    has_many :followeds, through: :followed_users
 
     has_many :following_users, foreign_key: :followed_id, class_name: 'Follow'
     has_many :followers, through: :following_users
@@ -16,23 +16,20 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    # validates :password, presence: true
-    # validates :username, presence: true
-    # validates :username, uniqueness: true
 
-    # def follow(user)
-    #     follow.create(followed_id: user.id)
-    # end
-
-    # def unfollow(user)
-    #     follow.find_by(followed_id: user.id).destroy
-    # end
-
-    # def following?(user)
-    #     following_users.include?(user)
-    # end
-
+    def following?(other_user)
+        if self.followeds.find(other_user.id)
+            return true
+        end
+    end
     
+    def follow!(other_user)
+        Follow.create(follower_id: self.id, followed_id: other_user.id)
+    end
+
+    def unfollow!(other_user)
+      self.followed_users.find_by(followed_id: other_user.id).destroy
+    end
 
     def add_karma
         self.karma += 1
