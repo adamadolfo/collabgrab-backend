@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:create]
 
-  
+  post "/follow", to: "users#follow" 
   delete "/logout", to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
   root to: "static#home"
