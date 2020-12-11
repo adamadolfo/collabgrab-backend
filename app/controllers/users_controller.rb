@@ -50,7 +50,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:follower_id])
         @followed = User.find(params[:followed_id])
         if @user && @followed
-            byebug
             if @user.following?(@followed)
                 @user.unfollow!(@followed)
             else

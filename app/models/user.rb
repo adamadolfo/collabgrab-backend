@@ -18,8 +18,10 @@ class User < ApplicationRecord
 
 
     def following?(other_user)
-        if self.followeds.find(other_user.id)
+        if self.followeds.exists?(other_user.id)
             return true
+        else
+            return false
         end
     end
     
