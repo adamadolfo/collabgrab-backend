@@ -2,7 +2,7 @@ class SkillsController < ApplicationController
     def index
         @skills = Skill.all
         if @skills
-            render :json => @skills.to_json(:include => [:projects, :users])
+            render :json => @skills.to_json(:include => {:users => {:include => :skills}})
         else
             render json: {
             status: 500,
