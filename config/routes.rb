@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs
   resources :posts
   resources :required_skills
   resources :follows

@@ -6,9 +6,8 @@ class SessionsController < ApplicationController
         .try(:authenticate, params[:password])
         if @user
             session[:user_id] = @user.id
-            render :json => @user.to_json(include: [:skills, :projects, :followers, :followeds])
-            
-            # byebug
+            render :json => @user.to_json(include: [:skills, :projects, :followers, :followeds, :blogs])
+        
         else
             render json: {
                 status: 401

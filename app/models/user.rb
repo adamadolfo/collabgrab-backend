@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
     has_many :posts
 
+    has_many :blogs
+
 
     has_secure_password
 
@@ -37,5 +39,6 @@ class User < ApplicationRecord
         self.karma += 1
     end
 
+    
 
 end
