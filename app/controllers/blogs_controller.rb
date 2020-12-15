@@ -14,6 +14,8 @@ class BlogsController < ApplicationController
     def create
         @blog = Blog.new(text: params[:post], user_id: params[:user_id])
         if @blog.save
+            @blog.translate_date           
+            @user = User.find(params[:user_id])
             render :json => @user.to_json(include: [:skills, :projects, :followers, :followeds, :blogs])
         end
     end
