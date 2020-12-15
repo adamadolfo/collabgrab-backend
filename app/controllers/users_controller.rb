@@ -61,10 +61,8 @@ class UsersController < ApplicationController
     end
 
 
-    # def karma
-    #     @user = User.find(params[:user_id])
-    #     if @user
-    #         @user.add_karma
-    #     end
-    # end
+    def feed
+        @user = User.find(params[:follower_id])
+        render :json => @user.feed.to_json
+    end
 end

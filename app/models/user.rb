@@ -39,6 +39,10 @@ class User < ApplicationRecord
         self.karma += 1
     end
 
-    
+    def feed
+        self.followeds.map do |followed_user| 
+            Blog.all.select { |blog| blog.user_id == followed_user.id }
+        end
+    end
 
 end
