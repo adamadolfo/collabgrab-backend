@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
 
     def feed
-        @user = User.find(params[:follower_id])
+        @user = User.find(params[:user_id])
         render :json => @user.feed.to_json
     end
 end

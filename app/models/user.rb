@@ -40,9 +40,11 @@ class User < ApplicationRecord
     end
 
     def feed
-        self.followeds.map do |followed_user| 
-            Blog.all.select { |blog| blog.user_id == followed_user.id }
+        filtered_feed = self.followeds.map do |followed_user| 
+            Blog.all.select { |blog| blog.user_id == followed_user.id }.flatten
         end
+        
+        combined_filtered_feed = filtered_feed.flatten.sort_by!(&:id).reverse!
     end
 
 end
